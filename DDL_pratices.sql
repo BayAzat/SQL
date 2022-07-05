@@ -101,3 +101,14 @@ where id=15;
 
 
 select * from roles;
+
+
+select * from roles 
+join roles_salary on roles.id = roles_salary.id_role
+join salary on roles_salary.id_salary = salary.id;
+
+select * from roles
+join roles_salary on roles.id = roles_salary.id;
+
+select * from roles_salary 
+join salary on roles_salary.id_salary = salary.id;
