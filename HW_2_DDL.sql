@@ -1,9 +1,9 @@
-create table employee(
+create table employees(
 	id serial primary key,
 	employee_name varchar(50) not null
 );
 
-insert into employee(employee_name)
+insert into employees(employee_name)
 	values ('emp_01'),
 			('emp_02'),
 			('emp_03'),
@@ -75,12 +75,14 @@ insert into employee(employee_name)
 			('emp_69'),
 			('emp_70');
 
-create table emp_salary(
+select * from employees;
+
+create table salary(
 	id serial primary key,
 	monthly_salary int not null
 );
 
-insert into emp_salary(monthly_salary)
+insert into salary(monthly_salary)
 	values (1000),
 			(1100),
 			(1200),
@@ -98,8 +100,8 @@ insert into emp_salary(monthly_salary)
 			(2400),
 			(2500);
 
+select * from salary;
 
-		
 create table employee_salary(
 	id serial primary key,
 	employee_id int unique not null,
@@ -146,16 +148,18 @@ insert into employee_salary(employee_id, salary_id)
 			(71, 46),
 			(70, 47),
 			(81, 27);
-		
-create table emp_roles(
+
+select * from employee_salary;
+			
+create table roles(
 	id serial primary key,
 	role_name int unique not null	
 );
 		
-alter table emp_roles
+alter table roles
 alter column role_name type varchar(30) using role_name::varchar(30);
 
-insert into emp_roles(role_name)
+insert into roles(role_name)
 	values ('Junior_Python_developer'),
 			('Middle_Python_developer'),
 			('Senior_Python_developer'),
@@ -177,12 +181,14 @@ insert into emp_roles(role_name)
 			('Middle_Automation_QA_engineer'),
 			('Senior_Automation_QA_engineer');
 
+select * from roles;
+
 create table roles_employee(
 	id serial primary key,
 	employee_id int unique not null,
 	role_id int not null,
 	foreign key (employee_id)
-		references employee(id),
+		references employees(id),
 	foreign key (role_id)
 		references roles(id)
 	);
