@@ -59,3 +59,21 @@ WHERE (cd = '12x'OR cd = '24x') AND price < 600
 SELECT DISTINCT maker, speed FROM product
 JOIN laptop ON product.model = laptop.model
 WHERE hd >= 10
+=================================
+Задание: 7
+Найдите номера моделей и цены всех имеющихся в продаже продуктов (любого типа) производителя B (латинская буква).
+
+SELECT laptop.model, price FROM product
+JOIN laptop ON product.model = laptop.model
+WHERE maker = 'B'
+UNION
+SELECT pc.model,price FROM  product
+JOIN pc ON product.model = pc.model
+WHERE maker = 'B'
+UNION
+SELECT printer.model, price FROM product
+JOIN printer ON product.model = printer.model
+WHERE maker = 'B';
+
+
+
